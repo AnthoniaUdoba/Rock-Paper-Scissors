@@ -16,6 +16,7 @@ class Player:
     # instance initialization
     def __init__(self):
         self.score = 0
+        self.mv = ''
         self.my_move = self.moves
         self.their_move = random.choice(self.moves)
 
@@ -24,6 +25,11 @@ class Player:
         self.my_move = my_move
         self.their_move = their_move
         pass
+
+    def move(self):
+        # Always return "rock"
+        self.mv = 'rock'
+        return self.mv
 
 
 # validates the winner
@@ -66,6 +72,9 @@ class ReflectPlayer(Player):
 
 
 class CyclePlayer(Player):
+
+    def __init__(self):
+        super().__init__()
 
     def move(self):
         # choses a different move of the last round
