@@ -73,17 +73,23 @@ class ReflectPlayer(Player):
 
 class CyclePlayer(Player):
 
-    def __init__(self):
-        super().__init__()
+    def learn(self, my_move, their_move):
+        self.my_move = my_move
 
     def move(self):
+        if self.my_move is None:
+            return random.choice(self.moves)
         # choses a different move of the last round
-        if self.their_move == "rock".lower():
+        elif self.my_move == "rock".lower():
             return "paper"
-        elif self.their_move == "paper".lower():
+        elif self.my_move == "paper".lower():
             return "scissors"
-        elif self.their_move == "scissors".lower():
+        elif self.my_move == "scissors".lower():
             return "rock"
+
+    def __init__(self):
+        super().__init__()
+        self.my_move = None
 
 
 class Game:
