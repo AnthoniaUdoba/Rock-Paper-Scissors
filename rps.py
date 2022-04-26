@@ -78,7 +78,6 @@ class CyclePlayer(Player):
 
     def move(self):
         # choses a different move of the last round
-        self.their_move = random.choice(self.moves)
         if self.their_move == "rock".lower():
             return "paper"
         elif self.their_move == "paper".lower():
